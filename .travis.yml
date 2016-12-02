@@ -10,6 +10,6 @@ script:
   - echo "Wait to allow Oracle to be initialized"
   - sleep 10
   - docker exec -i oracle bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
-  - docker exec -i oracleLE bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
+  - docker exec -i oracle bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
 
 
