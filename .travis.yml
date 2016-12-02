@@ -16,7 +16,7 @@ script:
   - docker exec -i oracle2 bash -c 'set -i "s/6766fe1c072d/$HOSTNAME/g" /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
   - echo "Wait to allow Oracle to be initialized"
   - travis_wait sleep 20
-  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
-  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
+  - docker exec -i oracle2 bash -c 'su - oracle | /u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
+  - docker exec -i oracle2 bash -c 'su - oracle |/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
 
 
