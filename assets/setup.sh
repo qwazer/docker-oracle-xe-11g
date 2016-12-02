@@ -7,7 +7,7 @@ cat /assets/oracle-xe_11.2.0-1.0_amd64.deba* > /assets/oracle-xe_11.2.0-1.0_amd6
 
 # Install OpenSSH
 apt-get update &&
-apt-get install -y openssh-server mc &&
+apt-get install -y openssh-server &&
 mkdir /var/run/sshd &&
 echo 'root:admin' | chpasswd &&
 sed -i 's/^PermitRootLogin .*/PermitRootLogin yes/' /etc/ssh/sshd_config &&
