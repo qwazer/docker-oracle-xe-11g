@@ -19,7 +19,7 @@ script:
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
   - docker exec -i oracle2 bash -c 'service oracle-xe stop'
-  - travis_wait sleep 600
+  - travis_wait sleep 200
   - docker exec -i oracle2 /usr/sbin/startup.sh
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
