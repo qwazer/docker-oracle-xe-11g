@@ -10,4 +10,4 @@ VOLUME /u01/app/oracle/oradata
 
 EXPOSE 1521
 
-ENTRYPOINT /usr/sbin/startup.sh
+ENTRYPOINT ["/usr/sbin/startup.sh"]
