@@ -4,14 +4,14 @@ services:
 
 script:
   - docker pull wnameless/oracle-xe-11g
-  - docker run --name oracle -h myhost -d -p 127.0.0.1:49161:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
-  - docker inspect oracle
+  - docker run --name oracle2 -h myhost -d -p 127.0.0.1:49161:1521 -e ORACLE_ALLOW_REMOTE=true wnameless/oracle-xe-11g
+  - docker inspect oracle2
   - docker ps -a
-  - docker exec -i oracle bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
-  - docker exec -i oracle bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
+  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
+  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
   - echo "Wait to allow Oracle to be initialized"
   - travis_wait sleep 20
-  - docker exec -i oracle bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
-  - docker exec -i oracle bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
+  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
+  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
 
 
