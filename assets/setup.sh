@@ -5,14 +5,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 cat /assets/oracle-xe_11.2.0-1.0_amd64.deba* > /assets/oracle-xe_11.2.0-1.0_amd64.deb
 
-# Install OpenSSH
-apt-get update &&
-apt-get install -y openssh-server &&
-mkdir /var/run/sshd &&
-echo 'root:admin' | chpasswd &&
-sed -i 's/^PermitRootLogin .*/PermitRootLogin yes/' /etc/ssh/sshd_config &&
-sed -i 's/session\s*required\s*pam_loginuid.so/session optional pam_loginuid.so/g' /etc/pam.d/sshd &&
-echo 'export VISIBLE=now' >> /etc/profile &&
 
 # Prepare to install Oracle
 apt-get install -y libaio1 net-tools bc &&
@@ -31,7 +23,7 @@ cp /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora /u01/app/oracle/
 mv /assets/init.ora /u01/app/oracle/product/11.2.0/xe/config/scripts &&
 mv /assets/initXETemp.ora /u01/app/oracle/product/11.2.0/xe/config/scripts &&
 
-printf 8080\\n1521\\noracle\\noracle\\ny\\n | /etc/init.d/oracle-xe configure &&
+printf 8080\\n1521\\noracle\\noracle\\nn\\n | /etc/init.d/oracle-xe configure &&
 
 echo 'export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe' >> /etc/bash.bashrc &&
 echo 'export PATH=$ORACLE_HOME/bin:$PATH' >> /etc/bash.bashrc &&
