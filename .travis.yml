@@ -5,9 +5,9 @@ services:
   - docker
 
 script:
-  - export HOSTNAME=myhost
+#  - export HOSTNAME=myhost
   - docker build -t qwazer/oracle-xe-11g .
-  - docker run --name oracle2 -h myhost -d -p 127.0.0.1:49161:1521 -e ORACLE_ALLOW_REMOTE=true qwazer/oracle-xe-11g
+  - docker run --name oracle2 -h ${HOSTNAME} -d -p 127.0.0.1:49161:1521 -e ORACLE_ALLOW_REMOTE=true qwazer/oracle-xe-11g
   - docker inspect oracle2
   - docker ps -a
   - docker logs --tail 200 oracle2
@@ -24,5 +24,10 @@ script:
 #  - docker exec -i oracle2 /usr/sbin/startup.sh
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
+  - docker exec -i oracle bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
+  - docker exec -i oracle bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
+
+
+
 
 
