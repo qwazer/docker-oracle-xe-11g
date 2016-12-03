@@ -22,10 +22,6 @@ script:
 #  - docker exec -i oracle2 bash -c 'service oracle-xe stop'
 #  - travis_wait sleep 200
 #  - docker exec -i oracle2 /usr/sbin/startup.sh
-  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
-  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
-  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
-  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora.tmpl'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora.tmpl'
   - docker top oracle2
@@ -33,6 +29,10 @@ script:
   - travis_wait sleep 10
   - docker top oracle2
   - docker exec -i oracle2 bash -c 'cat/u01/app/oracle/diag/rdbms/xe/XE/trace/alert_XE.log'
+  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
+  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
+  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
+  - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start'
 
 
 
