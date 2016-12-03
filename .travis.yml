@@ -28,7 +28,7 @@ script:
   - ps aux
   - travis_wait sleep 10
   - docker top oracle2
-  - docker exec -i oracle2 bash -c 'cat/u01/app/oracle/diag/rdbms/xe/XE/trace/alert_XE.log'
+  - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/diag/rdbms/xe/XE/trace/alert_XE.log'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora'
   - docker exec -i oracle2 bash -c 'cat /u01/app/oracle/product/11.2.0/xe/network/admin/tnsnames.ora'
   - docker exec -i oracle2 bash -c '/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop'
