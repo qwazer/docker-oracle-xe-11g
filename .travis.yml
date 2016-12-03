@@ -7,7 +7,7 @@ services:
 script:
 #  - export HOSTNAME=myhost
   - docker build -t qwazer/oracle-xe-11g .
-  - docker run --name oracle2 -h ${HOSTNAME} -d -p 127.0.0.1:49161:1521 -e ORACLE_ALLOW_REMOTE=true -t qwazer/oracle-xe-11g
+  - docker run --name oracle2 -h 6766fe1c072d -d -p 127.0.0.1:49161:1521 -e ORACLE_ALLOW_REMOTE=true -t qwazer/oracle-xe-11g
   - docker inspect oracle2
   - docker ps -a
   - docker logs --tail 200 oracle2
